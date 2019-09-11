@@ -10,6 +10,11 @@ virtualenv venv -p python3.5
 source venv/bin/activate
 ```
 
+Unzip data folder
+```bash
+unzip data.zip
+```
+
 install pytorch with no cuda
 ```bash
 check here: https://pytorch.org/
