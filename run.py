@@ -135,4 +135,5 @@ if __name__ == "__main__":
         parser.model.eval()
         UAS, dependencies = parser.parse(test_data)
         print("- test UAS: {:.2f}".format(UAS * 100.0))
+
         print("Done!")
