@@ -10,7 +10,7 @@ import numpy as np
 import torch
 from tqdm import tqdm
 
-from parser_transitions import minibatch_parse
+from .parser_transitions import minibatch_parse
 from .general_utils import get_minibatches
 
 P_PREFIX = '<p>:'
