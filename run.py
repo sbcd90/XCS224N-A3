@@ -102,7 +102,7 @@ if __name__ == "__main__":
     debug = True
     # debug = False
 
-    assert (torch.__version__ == "1.0.0"), "Please install torch version 1.0.0"
+    assert (torch.__version__ >= "1.0.0"), "Please install torch version 1.0.0 or above"
 
     print(80 * "=")
     print("INITIALIZING")
