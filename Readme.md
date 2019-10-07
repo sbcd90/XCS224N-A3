@@ -18,7 +18,7 @@ unzip data.zip
 install pytorch with no cuda
 ```bash
 check here: https://pytorch.org/
-pip3 install torch==1.2.0+cpu torchvision==0.4.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+pip install torch==1.2.0+cpu torchvision==0.4.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
 ```
 
 Install all dependencies
@@ -34,3 +34,4 @@ cd assignment_3
 sh collect_submission.sh
 cd ..
 ```
+
