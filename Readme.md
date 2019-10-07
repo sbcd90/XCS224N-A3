@@ -18,7 +18,6 @@ unzip data.zip
 install pytorch with no cuda
 ```bash
 check here: https://pytorch.org/
-pip install torch==1.2.0+cpu torchvision==0.4.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
 ```
 
 Install all dependencies
