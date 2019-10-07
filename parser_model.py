@@ -129,7 +129,7 @@ class ParserModel(nn.Module):
         ### the loss function (torch.nn.CrossEntropyLoss) applies it more efficiently.
         ###
         ### Please see the following docs for support:
-        ###     ReLU: https://pytorch.org/docs/stable/nn.html?highlight=relu#torch.nn.functional.relu
+        ###     ReLU: https://pytorch.org/docs/stable/nn.functional.html?highlight=relu#torch.nn.functional.relu
 
         ### END YOUR CODE
         return logits
