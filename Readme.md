@@ -36,7 +36,6 @@ pip install -r requirements.txt
 Assignment submission
 ```
 # zip the assignment submission folder
-cd assignment_3
 sh collect_submission.sh
 cd ..
 ```
