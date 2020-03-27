@@ -58,13 +58,9 @@ class PartialParse(object):
 
         Args:
             transitions: The list of transitions in the order they should be applied
-        Returns:
-            dependencies: The list of dependencies produced when parsing the sentence. Represented
-                          as a list of tuples where each tuple is of the form (head, dependent)
         """
         for transition in transitions:
             self.parse_step(transition)
-        return self.dependencies
 
 
 def minibatch_parse(sentences, model, batch_size):
