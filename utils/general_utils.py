@@ -46,6 +46,7 @@ def _minibatch(data, minibatch_idx):
 
 
 def test_all_close(name, actual, expected):
+    """Generic test function that checks output shape and max element difference."""
     if actual.shape != expected.shape:
         raise ValueError("{:} failed, expected output to have shape {:} but has shape {:}"
                          .format(name, expected.shape, actual.shape))

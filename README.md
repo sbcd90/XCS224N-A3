@@ -39,4 +39,9 @@ Assignment submission
 sh collect_submission.sh
 cd ..
 ```
+Instead of using the `collect_submission.sh` script, you can also submit individual files:
 
+- `parser_model.py`
+- ` run.py`
+- The entire contents of your `utils` folder
+- The entire contents of your `data` folder

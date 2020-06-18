@@ -21,6 +21,7 @@ ROOT = '<ROOT>'
 
 
 class Config(object):
+    """Stores configuration for parser model."""
     language = 'english'
     with_punct = True
     unlabeled = True
@@ -306,6 +307,7 @@ def read_conll(in_file, lowercase=False, max_example=None):
 
 
 def build_dict(keys, n_max=None, offset=0):
+    """Builds dictionary of n_max most common words. Retains all if n_max=None."""
     count = Counter()
     for key in keys:
         count[key] += 1
@@ -316,6 +318,7 @@ def build_dict(keys, n_max=None, offset=0):
 
 
 def punct(language, pos):
+    """Returns language-specific punctuation tokens."""
     if language == 'english':
         return pos in ["''", ",", ".", ":", "``", "-LRB-", "-RRB-"]
     elif language == 'chinese':
@@ -336,6 +339,7 @@ def punct(language, pos):
 
 
 def minibatches(data, batch_size):
+    """Batches data into minibatches of size batch_size."""
     x = np.array([d[0] for d in data])
     y = np.array([d[2] for d in data])
     one_hot = np.zeros((y.size, 3))
