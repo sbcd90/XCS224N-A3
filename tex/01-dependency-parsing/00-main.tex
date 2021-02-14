@@ -59,7 +59,7 @@ On each step, your parser will decide among the three transitions using a neural
     \end{center}
     where $\mathbf{E} \in \mathbb{R}^{ \vert V \vert \times d}$ is an embedding matrix with each row $\mathbf{E_w}$ as the vector for a particular word $w$. We then compute our prediction as:
     \begin{center}
-        $ \mathbf{h} = \relu(\mathbf{xW} + \mathbf{b_1})$ \\
+        $ \mathbf{h} = \relu (\mathbf{xW} + \mathbf{b_1})$ \\
         $ \mathbf{l} = \mathbf{hU} + \mathbf{b_2}$ \\
         $ \mathbf{\hat{y}} = \smx(l)$\\
     \end{center}
