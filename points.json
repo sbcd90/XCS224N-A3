@@ -1,20 +1,20 @@
 {
-  "1a-0-basic" : {"points":1, "question_id":"1a", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
-  "1a-1-basic" : {"points":1, "question_id":"1a", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
-  "1a-2-hidden" : {"points":1, "question_id":"1a", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
-  "1a-3-hidden" : {"points":1, "question_id":"1a", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
+  "1a-0-basic" : {"points":0.1, "question_id":"1a", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
+  "1a-1-basic" : {"points":0.1, "question_id":"1a", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
+  "1a-2-hidden" : {"points":0.9, "question_id":"1a", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
+  "1a-3-hidden" : {"points":0.9, "question_id":"1a", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
   "1a-4-hidden" : {"points":1, "question_id":"1a", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
   "1a-5-hidden" : {"points":1, "question_id":"1a", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
   "1a-6-hidden" : {"points":2, "question_id":"1a", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
 
-  "1b-0-basic" : {"points":1, "question_id":"1b", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
-  "1b-1-hidden" : {"points":1, "question_id":"1b", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
+  "1b-0-basic" : {"points":0.1, "question_id":"1b", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
+  "1b-1-hidden" : {"points":0.9, "question_id":"1b", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
   "1b-2-hidden" : {"points":1, "question_id":"1b", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
   "1b-3-hidden" : {"points":2, "question_id":"1b", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
   "1b-4-hidden" : {"points":2, "question_id":"1b", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
 
-  "1c-0-basic" : {"points":1, "question_id":"1c", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
-  "1c-1-hidden" : {"points":3, "question_id":"1c", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
+  "1c-0-basic" : {"points":0.1, "question_id":"1c", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
+  "1c-1-hidden" : {"points":2.9, "question_id":"1c", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
   "1c-2-hidden" : {"points":1, "question_id":"1c", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
   "1c-3-hidden" : {"points":5, "question_id":"1c", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":false},
 
@@ -22,7 +22,7 @@
   "quiz1-1-hidden" : {"points":1.9,   "question_id":"quiz1", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":true},
 
   "quiz2-0-helper" : {"points":0.1, "question_id":"quiz2", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":true},
-  "quiz2-1-hidden" : {"points":0.9,   "question_id":"quiz2", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":true},
+  "quiz2-1-hidden" : {"points":1.9,   "question_id":"quiz2", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":true},
 
   "quiz3a-0-helper" : {"points":0.1, "question_id":"quiz3a", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":true},
   "quiz3a-1-hidden" : {"points":0.9,   "question_id":"quiz3a", "is_written":false, "is_coding":true, "is_extra_credit":false, "no_label":true},
