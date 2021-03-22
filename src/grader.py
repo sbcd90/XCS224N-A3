@@ -61,8 +61,15 @@ class DummyModel(object):
     """
 
     def predict(self, partial_parses):
-        return [("RA" if pp.stack[1] is "right" else "LA") if len(pp.buffer) == 0 else "S"
-                for pp in partial_parses]
+        out = []
+        for pp in partial_parses:
+            if len(pp.buffer) > 0:
+                out.append("S")
+            elif pp.stack[1] is "left" and len(pp.stack) > 2:
+                out.append("LA")
+            else:
+                out.append("RA")
+        return out
 
 def test_dependencies(name, deps, ex_deps):
     """Tests the provided dependencies match the expected dependencies"""
@@ -84,9 +91,9 @@ def test_minibatch_parse():
     test_dependencies("minibatch_parse", deps[1],
                       (('ROOT', 'right'), ('arcs', 'only'), ('only', 'again'), ('right', 'arcs')))
     test_dependencies("minibatch_parse", deps[2],
-                      (('only', 'ROOT'), ('only', 'arcs'), ('only', 'left')))
+                      (('ROOT', 'only'), ('only', 'arcs'), ('only', 'left')))
     test_dependencies("minibatch_parse", deps[3],
-                      (('again', 'ROOT'), ('again', 'arcs'), ('again', 'left'), ('again', 'only')))
+                      (('ROOT', 'again'), ('again', 'arcs'), ('again', 'left'), ('again', 'only')))
     print("minibatch_parse test passed!")
 
 
