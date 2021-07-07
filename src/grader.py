@@ -267,22 +267,22 @@ class Test_1b(GradedTestCase):
   @graded(is_hidden=True)
   def test_1(self):
     """1b-1-hidden: single batch"""
-    self.assertTrue(lambda: test_minibatch_parse(self.sentences_simple, 3, self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
+    self.assertTrue(lambda: hidden_test_minibatch_parse(self.sentences_simple, 3, self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
 
   @graded(is_hidden=True)
   def test_2(self):
     """1b-2-hidden: batch_size = 1"""
-    self.assertTrue(lambda: test_minibatch_parse(self.sentences_simple, 1, self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
+    self.assertTrue(lambda: hidden_test_minibatch_parse(self.sentences_simple, 1, self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
 
   @graded(is_hidden=True)
   def test_3(self):
     """1b-3-hidden: same_lengths"""
-    self.assertTrue(lambda: test_minibatch_parse(self.sentences_simple, 2, self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
+    self.assertTrue(lambda: hidden_test_minibatch_parse(self.sentences_simple, 2, self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
 
   @graded(is_hidden=True)
   def test_4(self):
     """1b-4-hidden: different_lengths"""
-    self.assertTrue(lambda: test_minibatch_parse(self.sentences, 2, self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
+    self.assertTrue(lambda: hidden_test_minibatch_parse(self.sentences, 2, self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
 
 class Test_1c(GradedTestCase):
   def setUp(self):
