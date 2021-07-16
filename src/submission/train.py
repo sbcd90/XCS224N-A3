@@ -78,7 +78,7 @@ def train_for_epoch(parser, train_data, dev_data, optimizer, loss_func, batch_si
             loss = 0.  # store loss for this batch here
             train_x = torch.from_numpy(train_x).long()
             train_y = torch.from_numpy(train_y.nonzero()[1]).long()
-            
+
             ### TODO:
             ###      1) Run train_x forward through model to produce `logits`
             ###      2) Use the `loss_func` parameter to apply the PyTorch CrossEntropyLoss function.
@@ -89,7 +89,7 @@ def train_for_epoch(parser, train_data, dev_data, optimizer, loss_func, batch_si
             ###      4) Take step with the optimizer
             ### Please see the following docs for support:
             ###     Optimizer Step: https://pytorch.org/docs/stable/optim.html#optimizer-step
-            ### START CODE HERE (~5-10 lines)
+            ### START CODE HERE (~4 lines)
             ### END CODE HERE
             prog.update(1)
             loss_meter.update(loss.item())
