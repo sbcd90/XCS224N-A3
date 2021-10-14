@@ -18,18 +18,5 @@
   "1c-2-hidden" : {"points":1, "question_id":"1c", "is_written":false, "is_coding":true, "is_online": false, "is_extra_credit":false, "no_label":false},
   "1c-3-hidden" : {"points":5, "question_id":"1c", "is_written":false, "is_coding":true, "is_online": false, "is_extra_credit":false, "no_label":false},
 
-  "1quiz" : {"points":2, "question_id":"1quiz", "is_written":false, "is_coding":false, "is_online": true, "is_extra_credit":false, "no_label":false},
-  "2quiz" : {"points":2, "question_id":"2quiz", "is_written":false, "is_coding":false, "is_online": true, "is_extra_credit":false, "no_label":false},
-  "3aquiz" : {"points":1, "question_id":"3aquiz", "is_written":false, "is_coding":false, "is_online": true, "is_extra_credit":false, "no_label":false},
-  "3bquiz" : {"points":1, "question_id":"3bquiz", "is_written":false, "is_coding":false, "is_online": true, "is_extra_credit":false, "no_label":false},
-  "4aquiz" : {"points":0.5, "question_id":"4aquiz", "is_written":false, "is_coding":false, "is_online": true, "is_extra_credit":false, "no_label":false},
-  "4bquiz" : {"points":0.5, "question_id":"4bquiz", "is_written":false, "is_coding":false, "is_online": true, "is_extra_credit":false, "no_label":false},
-  "4cquiz" : {"points":0.5, "question_id":"4cquiz", "is_written":false, "is_coding":false, "is_online": true, "is_extra_credit":false, "no_label":false},
-  "4dquiz" : {"points":0.5, "question_id":"4dquiz", "is_written":false, "is_coding":false, "is_online": true, "is_extra_credit":false, "no_label":false},
-  "4equiz" : {"points":0.5, "question_id":"4equiz", "is_written":false, "is_coding":false, "is_online": true, "is_extra_credit":false, "no_label":false},
-  "5quiz" : {"points":0.5, "question_id":"5quiz", "is_written":false, "is_coding":false, "is_online": true, "is_extra_credit":false, "no_label":false},
-  "6quiz" : {"points":1, "question_id":"6quiz", "is_written":false, "is_coding":false, "is_online": true, "is_extra_credit":false, "no_label":false},
-  "7quiz" : {"points":1, "question_id":"7quiz", "is_written":false, "is_coding":false, "is_online": true, "is_extra_credit":false, "no_label":false},
-  "8quiz" : {"points":1, "question_id":"8quiz", "is_written":false, "is_coding":false, "is_online": true, "is_extra_credit":false, "no_label":false},
-  "9quiz" : {"points":1, "question_id":"9quiz", "is_written":false, "is_coding":false, "is_online": true, "is_extra_credit":false, "no_label":false}
+  "quiz" : {"points":13, "question_id":"quiz", "is_written":false, "is_coding":false, "is_online": true, "is_extra_credit":false, "no_label":false}
 }
