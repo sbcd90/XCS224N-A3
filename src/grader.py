@@ -124,6 +124,28 @@ def hidden_test_minibatch_parse(sentences, batch_size, soln):
     return len(expected) == len(actual) and all(
         tuple(sorted(expected[i])) == tuple(sorted(actual[i])) for i in range(len(expected)))
 
+def hidden_test_parser_model(input, soln):
+
+    torch.manual_seed(42)
+    torch.cuda.manual_seed(42)
+    np.random.seed(42)
+    random.seed(42)
+    torch.backends.cudnn.deterministic = True
+
+    _, embeddings, _, _, _ = submission.load_and_preprocess_data()
+    
+    model_expected = soln.ParserModel(embeddings).forward(input).data.numpy().tolist()
+    model_actual = submission.ParserModel(embeddings).forward(input).data.numpy().tolist()
+
+    print("actual output")
+    print(model_actual)
+    print()
+
+    print("expected output")
+    print(model_expected)
+
+    return np.isclose(model_actual, model_expected, atol=1e-2).all()
+
 def setup():
     # IMP need to change the data format here
     parser, embeddings, train_data, dev_data, test_data = load_and_preprocess_data(True)
@@ -193,14 +215,6 @@ test_cases_ip = {
                             83, 83, 83, 83, 83, 83, 56, 53, 83, 83, 83, 44]])
     },
     'run': 66.50004165625261
-}
-
-test_cases_op = {
-    'parser_model': [[-2.9471852779388428, 1.163732886314392, -2.4693527221679688],
-                     [-1.4865437746047974, -0.21673092246055603, 2.106098175048828],
-                     [-4.901534080505371, -1.1858288049697876, -1.4117028713226318],
-                     [-1.0349053144454956, 2.8902676105499268, -3.6454951763153076],
-                     [-3.5574071407318115, -0.385123074054718, 1.1519192457199097]]
 }
 
 #########
@@ -290,26 +304,10 @@ class Test_1c(GradedTestCase):
     np.random.seed(4355)
     self.inputs = setup()
 
-  @graded(timeout=30)
+  @graded(is_hidden = True, timeout=30)
   def test_0(self):
-    """1c-0-basic:  Sanity check for Parser Model"""
-    torch.manual_seed(42)
-    torch.cuda.manual_seed(42)
-    np.random.seed(42)
-    random.seed(42)
-    torch.backends.cudnn.deterministic = True
-
-    _, embeddings, _, _, _ = submission.load_and_preprocess_data()
-    model = submission.ParserModel(embeddings)
-    t = test_cases_ip['parser_model']['t']
-    model_actual = model.forward(t).data.numpy().tolist()
-    model_expected = test_cases_op['parser_model']
-    print("actual output")
-    print(model_actual)
-    print()
-    print("expected output")
-    print(model_expected)
-    self.assertTrue(np.isclose(model_actual, model_expected, atol=1e-2).all())
+    """1c-0-hidden:  Sanity check for Parser Model"""
+    self.assertTrue(lambda: hidden_test_parser_model(test_cases_ip['parser_model']['t'], self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
 
   @graded(is_hidden = True, timeout=30)
   def test_1(self):
