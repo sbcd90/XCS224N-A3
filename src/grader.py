@@ -106,7 +106,7 @@ def run_parse_step(PartialParse, transition, stack, buf, deps):
     pp.parse_step(transition)
     return pp
 
-def hidden_test_parse_step(transition, stack, buf, deps):
+def hidden_test_parse_step(transition, stack, buf, deps, soln):
     expected = run_parse_step(soln.PartialParse, transition, stack, buf, deps)
     student_result = run_parse_step(submission.PartialParse, transition, stack, buf, deps)
     return parses_equal(expected, student_result)
@@ -114,13 +114,13 @@ def hidden_test_parse_step(transition, stack, buf, deps):
 def hidden_test_parse(soln):
     sentence = [1, 2, 3]
     transitions = ["S", "S", "S", "LA", "RA", "RA"]
-    expected = tuple(sorted(soln.PartialParse(sentence).parse(transitions)))
-    student_result = tuple(sorted(submission.PartialParse(sentence).parse(transitions)))
+    expected = soln.PartialParse(sentence).parse(transitions)
+    student_result = submission.PartialParse(sentence).parse(transitions)
     return expected == student_result
 
 def hidden_test_minibatch_parse(sentences, batch_size, soln):
-    expected = soln.minibatch_parse(sentences, soln.DummyModel(), batch_size)
-    actual = submission.minibatch_parse(sentences, soln.DummyModel(), batch_size)
+    expected = soln.minibatch_parse(sentences, soln.parser_transitions.DummyModel(), batch_size)
+    actual = submission.minibatch_parse(sentences, submission.parser_transitions.DummyModel(), batch_size)
     return len(expected) == len(actual) and all(
         tuple(sorted(expected[i])) == tuple(sorted(actual[i])) for i in range(len(expected)))
 
@@ -238,27 +238,27 @@ class Test_1a(GradedTestCase):
   @graded(is_hidden=True)
   def test_2(self):
     """1a-2-hidden:  init"""
-    self.assertTrue(lambda: test_init(self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
+    self.assertTrue(test_init(self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
 
   @graded(is_hidden=True)
   def test_3(self):
     """1a-3-hidden:  shift"""
-    self.assertTrue(lambda: hidden_test_parse_step("S", [0, 1, 2], [1], []))
+    self.assertTrue(hidden_test_parse_step("S", [0, 1, 2], [1], [], self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
 
   @graded(is_hidden=True)
   def test_4(self):
     """1a-4-hidden:  right-arc"""
-    self.assertTrue(lambda: hidden_test_parse_step("RA", [0, 1, 2], [1], []))
+    self.assertTrue(hidden_test_parse_step("RA", [0, 1, 2], [1], [], self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
 
   @graded(is_hidden=True)
   def test_5(self):
     """1a-5-hidden:  left-arc"""
-    self.assertTrue(lambda: hidden_test_parse_step("LA", [0, 1, 2], [1], []))
+    self.assertTrue(hidden_test_parse_step("LA", [0, 1, 2], [1], [], self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
 
   @graded(is_hidden=True)
   def test_6(self):
     """1a-6-hidden:  parse"""
-    self.assertTrue(lambda: hidden_test_parse(self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
+    self.assertTrue(hidden_test_parse(self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
 
 class Test_1b(GradedTestCase):
   def setUp(self):
@@ -281,22 +281,22 @@ class Test_1b(GradedTestCase):
   @graded(is_hidden=True)
   def test_1(self):
     """1b-1-hidden: single batch"""
-    self.assertTrue(lambda: hidden_test_minibatch_parse(self.sentences_simple, 3, self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
+    self.assertTrue(hidden_test_minibatch_parse(self.sentences_simple, 3, self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
 
   @graded(is_hidden=True)
   def test_2(self):
     """1b-2-hidden: batch_size = 1"""
-    self.assertTrue(lambda: hidden_test_minibatch_parse(self.sentences_simple, 1, self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
+    self.assertTrue(hidden_test_minibatch_parse(self.sentences_simple, 1, self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
 
   @graded(is_hidden=True)
   def test_3(self):
     """1b-3-hidden: same_lengths"""
-    self.assertTrue(lambda: hidden_test_minibatch_parse(self.sentences_simple, 2, self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
+    self.assertTrue(hidden_test_minibatch_parse(self.sentences_simple, 2, self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
 
   @graded(is_hidden=True)
   def test_4(self):
     """1b-4-hidden: different_lengths"""
-    self.assertTrue(lambda: hidden_test_minibatch_parse(self.sentences, 2, self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
+    self.assertTrue(hidden_test_minibatch_parse(self.sentences, 2, self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
 
 class Test_1c(GradedTestCase):
   def setUp(self):
@@ -307,7 +307,7 @@ class Test_1c(GradedTestCase):
   @graded(is_hidden = True, timeout=30)
   def test_0(self):
     """1c-0-hidden:  Sanity check for Parser Model"""
-    self.assertTrue(lambda: hidden_test_parser_model(test_cases_ip['parser_model']['t'], self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
+    self.assertTrue(hidden_test_parser_model(test_cases_ip['parser_model']['t'], self.run_with_solution_if_possible(submission, lambda sub_or_sol:sub_or_sol)))
 
   @graded(is_hidden = True, timeout=30)
   def test_1(self):
