@@ -62,7 +62,7 @@ class DummyModel(object):
     """
 
     def predict(self, partial_parses):
-        return [("RA" if pp.stack[1] is "right" else "LA") if len(pp.buffer) == 0 else "S"
+        return [("RA" if pp.stack[1] == "right" else "LA") if len(pp.buffer) == 0 else "S"
                 for pp in partial_parses]
 
 def test_dependencies(name, deps, ex_deps):
