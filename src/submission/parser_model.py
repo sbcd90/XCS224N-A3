@@ -139,24 +139,3 @@ class ParserModel(nn.Module):
         ###  START CODE HERE (~3-5 lines)
         ### END CODE HERE
         return logits
-
-
-if __name__ == '__main__':
-    torch.manual_seed(42)
-    torch.cuda.manual_seed(42)
-    np.random.seed(42)
-    random.seed(42)
-    torch.backends.cudnn.deterministic = True
-
-    _, embeddings, _, _, _ = load_and_preprocess_data()
-    model = ParserModel(embeddings)
-    t = test_case.test_cases_ip['parser_model']['t']
-    model_actual = model.forward(t).data.numpy().tolist()
-    model_expected = test_case.test_cases_op['parser_model']
-    print("actual output")
-    pprint(model_actual)
-    print("\n" * 2)
-    print("expected output")
-    pprint(model_expected)
-
-    print("test passed" if np.isclose(model_actual, model_expected, atol=1e-2).all() else "test failed")
