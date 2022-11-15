@@ -1,3 +1,6 @@
+from collections import deque
+import copy
+
 class PartialParse(object):
     def __init__(self, sentence):
         """Initializes this partial parse.
@@ -21,6 +24,12 @@ class PartialParse(object):
         self.sentence = sentence
 
         ### START CODE HERE
+        self.stack = []
+        self.stack.append("ROOT")
+
+        self.buffer = copy.deepcopy(self.sentence)
+
+        self.dependencies = list()
         ### END CODE HERE
 
     def parse_step(self, transition):
@@ -32,6 +41,20 @@ class PartialParse(object):
                         transition.
         """
         ### START CODE HERE
+        if transition == "S":
+            self.stack.append(self.buffer.pop(0))
+        elif transition == "LA":
+            child = self.stack.pop()
+            parent = self.stack.pop()
+
+            self.dependencies.append((child, parent))
+            self.stack.append(child)
+        else:
+            parent = self.stack.pop()
+            child = self.stack.pop()
+
+            self.dependencies.append((child, parent))
+            self.stack.append(child)
         ### END CODE HERE
 
     def parse(self, transitions):
@@ -66,6 +89,29 @@ def minibatch_parse(sentences, model, batch_size):
     """
 
     ### START CODE HERE
+    partial_parses = [(idx, PartialParse(sentence)) for idx, sentence in enumerate(sentences)]
+    dependencies = []
+    unfinished_parses = partial_parses
+
+    while len(unfinished_parses) > 0:
+        mini_batch = unfinished_parses[:min(batch_size, len(unfinished_parses))]
+        transitions = model.predict([partial_parse for idx, partial_parse in mini_batch])
+
+        new_unfinished_parses = []
+        for mini_batch_elem, transition in zip(mini_batch, transitions):
+            idx, partial_parse = mini_batch_elem
+            partial_parse.parse_step(transition)
+
+            if len(partial_parse.buffer) == 0 and len(partial_parse.stack) == 1:
+                dependencies.append((idx, partial_parse.dependencies))
+            else:
+                new_unfinished_parses.append((idx, partial_parse))
+
+        unfinished_parses = new_unfinished_parses + unfinished_parses[len(mini_batch):]
+
+    dependencies.sort(key=lambda elem: elem[0])
+    dependencies = list(map(lambda elem: elem[1], dependencies))
+
     ### END CODE HERE
 
     return dependencies
